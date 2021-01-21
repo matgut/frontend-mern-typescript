@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import './App.css';
+import VideoForm from './components/Videos/VideoForm';
+
+import videoList from './components/Videos/VideoList';
+import Navbar from './components/Navbar/Navbar';
+import 'bootswatch/dist/pulse/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar/>
+      <div className="container p-4">
+        <Switch>
+          <Route exact path="/" component={videoList}/>
+          <Route path="/new-video" component={VideoForm}/>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
